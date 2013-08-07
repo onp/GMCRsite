@@ -94,7 +94,7 @@ var dmPageScript = function(){
     $('#collector').click(function(){
         console.log(JSON.stringify(confCollector(), '    '));
         var conf = JSON.stringify(confCollector(), '    ')
-        $.post("save/", {msg:conf})
+        $.post("", {msg:conf})
             .done(function(data){console.log(data);})
             .fail(function(){console.log("failed");});
     });
