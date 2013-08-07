@@ -1,0 +1,30 @@
+{
+    "DecisionMakers": [
+        {
+            "name": "First Decision Maker",
+            "options": [
+                {
+                    "optName": "Agree",
+                    "image": "handshake.png"
+                },
+                {
+                    "optName": "Deal",
+                    "image": "briefcase.png"
+                }
+            ]
+        },
+        {
+            "name": "Decision Maker 2",
+            "options": [
+                {
+                    "optName": "Dam",
+                    "image": "dam.png"
+                },
+                {
+                    "optName": "Attack",
+                    "image": "fist.jpg"
+                }
+            ]
+        }
+    ]
+}

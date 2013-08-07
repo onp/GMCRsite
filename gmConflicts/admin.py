@@ -1,0 +1,1 @@
+from django.contrib import adminfrom gmConflicts.models import GM_conflictadmin.site.register(GM_conflict)

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>GMCR Conflicts</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	
+    <link rel="stylesheet" href="//necolas.github.io/normalize.css/2.1.2/normalize.css" />
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/start/jquery-ui.css"  />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+	
+    {% load staticfiles %}
+	<script type="text/javascript" src="{% static 'gmConflicts/mTemps.js' %}"></script>
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'gmConflicts/styles/style_edit.css' %}" />
+		
+</head>
+
+<body>
+<div class="container">
+
+<div class="topbar">
+<p>GMCR<br>DSS</p>
+</div>
+
+
+<div class="mainContent">
+    <ul class="confList">
+		<a class="addConflict" href="{% url 'gmConflicts:newConflict' %}">Create New Conflict</a>
+		{% if latest_conflicts %}
+			{% for conf in latest_conflicts %}
+				<li class="conflictBox">
+					<a href="{% url 'gmConflicts:editor' conf.id %}" class="confLink">{{ conf.title }}</a>
+					<p class="pub_date">created: {{conf.pub_date}}</p>
+					<p class="confDescription">{{conf.description}}</p>
+				</li>
+			{% endfor %}
+		{% else %}
+			<li class="conflictBox">No conflicts are available.</li>
+		{% endif %}
+	</ul>
+</div>
+
+	
+
+</div>
+</body>
+
+
+</HTML>

@@ -1,0 +1,9 @@
+{% if latest_conflicts %}
+    <ul>
+    {% for poll in latest_conflicts %}
+        <li><a href="/conflicts/{{ conf.id }}/">{{ conf.question }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
