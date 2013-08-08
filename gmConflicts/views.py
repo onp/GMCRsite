@@ -21,7 +21,7 @@ def newConflict(request):
                 json_rep = request.POST['msg'],
                 json_stabilities = "{}")
         conf.save()
-        return HttpResponseRedirect(reverse('gmConflicts:editor', args=[conf.id]))
+        return HttpResponse(reverse('gmConflicts:editor', args=[conf.id]))
     
     elif request.method == "GET":
         conf = {'json_rep':"{}"}

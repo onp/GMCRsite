@@ -95,7 +95,10 @@ var dmPageScript = function(){
         console.log(JSON.stringify(confCollector(), '    '));
         var conf = JSON.stringify(confCollector(), '    ')
         $.post("", {msg:conf})
-            .done(function(data){console.log(data);})
+            .done(function(data){
+                window.history.replaceState({'blah':'blah'},'a title',data);
+                console.log(data);
+                })
             .fail(function(){console.log("failed");});
     });
 };
