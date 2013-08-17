@@ -1,5 +1,6 @@
 div.container{
-	width:1200px;
+    width:100%;
+	max-width:1200px;
 	position:relative;
 	margin:0 auto;
 }
@@ -11,24 +12,67 @@ div{margin:0;padding:0}
 
 div.topbar{
 	position:relative;
-	width:101%;
+	width:100%;
 	height:95px;
 	right:5px;
 	border-bottom:2px solid gray;
 }
 
-div.topbar p{
+div.topbar p.appName{
 	border-left:2px solid gray;
 	padding:0px 5px;
 	text-align:right;
-	position:absolute;
-	right:20px;
+	float:right;
 	font-size:40px;
 	font-weight:bold;
 }
 
+form.confInfo{
+
+    padding:5px;
+    margin-bottom:5px;
+    /*background-color:lightBlue;
+    border:2px solid black;*/
+    box-sizing:border-box;
+}
+
+input.confName{
+    display:block;
+	font-size:25px;
+	padding:8px 4px;
+    background-color:transparent;
+    border:solid 1px transparent;
+}
+
+input.confName:hover{
+    border:solid 1px black;
+}
+
+input.confName:focus{
+    background-color:white;
+}
+
+
+textarea.confDesc{
+    display:block;
+    box-sizing:border-box;
+    width:100%;
+    max-width:100%;
+    background-color:transparent;
+    border:solid 1px transparent;
+}
+
+textarea.confDesc:focus{
+    background-color:white;
+}
+
+textarea.confDesc:hover{
+    border:solid 1px black;
+}
+
 div.sidebar{
 	position:absolute;
+    width:150px;
 	top:100px;
 }
 
@@ -63,32 +107,34 @@ div.sidebar li p{
 }		
 
 div.mainContent{
-	position:absolute;
-	left: 13%;
-	top:100px;
+    margin: 5px 10px 10px 155px;
+    padding:5px;
 	background-color:darkTurquoise;
 	min-height:500px;
-	width:87%;
 }
 
+ul.confList,
 div.dmList{
-	position:relative;
-	width:45%;
-	padding:10px;
+	width:47%;
+    min-width:325px;
 }
 
+li.conflictBox,
 form.dmForm{
 	position:relative;
 	margin-bottom:10px;
 	border:2px solid black;
 	width:100%;
-	min-height:150;
+	min-height:100px;
 	background-color:lightBlue;
+    box-sizing:border-box;
 }
 
+a.addConflict,
 li.addDM {
 	position:relative;
 	margin:0px;
+	margin-bottom:10px;
 	border:1px solid black;
 	width:100%;
 	height:25px;
@@ -98,11 +144,18 @@ li.addDM {
 	font-size:20px;
 }
 
+a.addConflict{
+	display:block;
+	color:black;
+}
+
+a.addConflict:hover,
 li.addDM:hover {
 	border:2px black solid;
 	padding:1px 0px;
 }
 
+a.confLink,
 form.dmForm input.dmName{
 	position:relative;
 	margin:5px;
@@ -110,6 +163,10 @@ form.dmForm input.dmName{
 	font-size:20px;
 	color:red;
 	padding:8px 4px;
+}
+
+a.confLink{
+	color:black;
 }
 
 form.dmForm ul.dmOptions{
@@ -224,4 +281,14 @@ img.iconPicker{
 img.iconPicker:hover{
 	border:3px solid black;
 	margin:1.5px;
+}
+
+p.confDescription{
+	background-color:white;
+	margin:5px;
+}
+
+p.pub_date{
+	margin:5px;
+	float:right;
 }

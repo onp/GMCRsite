@@ -20,7 +20,7 @@
 	<script type="text/javascript" src="{% static 'gmConflicts/mTemps.js' %}"></script>
 	<script type="text/javascript" src="{% static 'gmConflicts/js/dmPage.js' %}"></script>
     
-    <link rel="stylesheet" type="text/css" href="{% static 'gmConflicts/styles/style_edit.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'gmConflicts/styles/styles.css' %}" />
 	
 <script type="text/javascript">
 var conflict = {{ conf.json_rep |safe}};
@@ -32,14 +32,19 @@ $(dmPageScript);
 <div class="container">
 
     <div class="topbar">
-    <p>GMCR<br>DSS</p>
+        <p class="appName">GMCR<br>DSS</p>
+        
+        <form class="confInfo">
+            <input type="text" name="confName" value="{{ conf.title }}" class="confName"></input>
+            <p id=collector style="background-color:red; width:200px; margin:10px;">Save Conflict</p>
+            <textarea name="confDesc" class="confDesc">{{conf.description}}</textarea>
+        </form>
     </div>
 
 
     <div class="mainContent">
-        <div class="dmList">
-        </div>
-        <p id=collector style="background-color:red; width:200px; margin:10px;">Collect data</p>
+        <div class="dmList"></div>
+        <div class="optBank"></div>
     </div>
 
 
