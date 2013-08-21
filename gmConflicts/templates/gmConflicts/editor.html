@@ -35,9 +35,9 @@ $(dmPageScript);
         <p class="appName">GMCR<br>DSS</p>
         
         <form class="confInfo">
-            <input type="text" name="confName" value="{{ conf.title }}" class="confName"></input>
-            <p id=collector style="background-color:red; width:200px; margin:10px;">Save Conflict</p>
             <textarea name="confDesc" class="confDesc">{{conf.description}}</textarea>
+            <input type="text" name="confName" value="{{ conf.title }}" class="confName"></input>
+            <p id=saveButton>Save Conflict</p>
         </form>
     </div>
 

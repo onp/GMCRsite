@@ -91,7 +91,7 @@ var dmPageScript = function(){
         return conf
     }
 
-    $('#collector').click(function(){
+    $('#saveButton').click(function(){
         console.log(JSON.stringify(confCollector(), '    '));
         var conf = JSON.stringify(confCollector(), '    ')
         $.post("", {msg:conf})
