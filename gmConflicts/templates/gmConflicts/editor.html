@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'gmConflicts/styles/styles.css' %}" />
 	
 <script type="text/javascript">
-var conflict = {{ conf.json_rep |safe}};
+var conflictData = {{ conf.json_rep |safe}};
 $(dmPageScript);
 </script>
 </head>
@@ -44,7 +44,10 @@ $(dmPageScript);
 
     <div class="mainContent">
         <div class="dmList"></div>
-        <div class="optBank"></div>
+        <div class="optList">
+            <p class="optList-title">All Options</p>
+        </div>
+        <div style="clear:both"></div>
     </div>
 
 
