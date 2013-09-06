@@ -47,8 +47,22 @@ var dmPageScript = function(){
             });
         };
         
-        this.renderOption = function(){
-            $newView = $(optMaker(_opt));
+        this.renderOption = function(dm){
+            var $newView = $(optMaker(_opt));
+            $newView.data("dm", dm);
+            $newView.data("option",_opt);
+            $newView.data("conflict",_conf);
+            $newView.on('remove',function(){
+                _opt.views.splice(_opt.views.indexOf($newView),1);
+
+                $newView.dm.options.splice($newView.dm.options.indexOf(_opt),1);
+                if (_opt.views.length==1){
+                    _opt.views[0].addClass("unused")
+                        .find("span").html("Unused");
+                }else if (_opt.views.length==0){
+                    _conf.options.splice(_conf.options.indexOf(_opt),1);
+                };
+            });
             $newView.find('.rev').val(this.reversible).change(function(){
                 _opt.reversible = $(this).val();
                 _opt.updateViews();
@@ -81,11 +95,13 @@ var dmPageScript = function(){
         
         this.renderDM = function(){
             $dm = $(dmMaker(this));
+            $dm.data("dm",_dm);
+            $dm.data("conflict",_conf);
             $dm.find("input.dmName").change(function(){
                 _dm.name = $(this).val();
             });
             $.each(this.options,function(){
-                $dm.find(".dmOptions").append(this.renderOption());
+                $dm.find(".dmOptions").append(this.renderOption(_dm));
                 $dm.find(".addOpt").appendTo($dm.find(".dmOptions"));
             });
             
@@ -113,8 +129,8 @@ var dmPageScript = function(){
             return new OptionObj(_conf,opt);
         });
          
-        this.decisionMakers = $.map(conflict.decisionMakers,function(dm){
-            return new DMObj(_conf,dm);
+        this.decisionMakers = $.map(conflict.decisionMakers,function(dmData){
+            return new DMObj(_conf,dmData);
         });
         
         this.title = conflict.title;
@@ -145,6 +161,11 @@ var dmPageScript = function(){
             $optionList = $("<div class='optBank'>");
             $.each(this.options,function(){
                 $optionList.append(this.renderOption());
+            });
+            $optionList.find("li.option").draggable({
+                revert:"invalid",
+                helper:"clone",
+                connectToSortable:"ul.dmOptions" 
             });
             return $optionList;
         };
@@ -183,10 +204,11 @@ var dmPageScript = function(){
 	
 							 
 	$("div.dmList").on("sortreceive","ul.dmOptions",function(){
-		$(this).find("li.addOpt").appendTo(this);});			//keep "add Option" at end of list
+		$(this).find("li.addOpt").appendTo(this);
+    });			//keep "add Option" at end of list
 	
 	$("div.dmList").on("click","img.cornerX",function(){		//activate "remove" x's
-        $(this).parent().trigger("remove").remove();
+        $(this).parent().remove();
 	});
 	
 	var $iconPicker = $(Mustache.render(templates.iconChooserTemplate,iconList));
@@ -229,3 +251,15 @@ var dmPageScript = function(){
             });
     });
 };
+
+
+
+
+
+
+
+ //       if (_opt.views.length > 1){
+ //           $.each(_opt.views,function(){
+ //               this.removeClass("unused");
+ //           });
+ //       };
